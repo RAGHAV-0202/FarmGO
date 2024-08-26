@@ -7,17 +7,20 @@ import { GoogleLogin } from "react-google-login"
 import { useNavigate } from "react-router-dom"
 
 
-
-
 const clientId = "413271787614-j8ch2do23jvq9paten0djndccaafqc2m.apps.googleusercontent.com"
 
 
-
-
 function GoogleLoginButton(){
+    const navigate = useNavigate();
 
-    const onSuccess = (res)=>{
-        console.log("Login Success , Current User : " + res.profileObj )
+    const onSuccess = async(res)=>{
+        try{
+         await axios.post("http://localhost:8000/api/auth/login", { login : res.profileObj.email, password : res.profileObj.googleId }, { withCredentials: true })
+        
+        navigate('/homepage'); 
+        }catch(error){
+            console.log(error)
+        }
     }
     const onFailure = (res)=>{
         console.log("Login Failder , res : " + res )
@@ -125,7 +128,7 @@ function LoginPage(){
                 scope : ""
             })
         }
-        gapi.load("client : auth2" , start)
+        gapi.load("client:auth2" , start)
     } , [])
 
     return(

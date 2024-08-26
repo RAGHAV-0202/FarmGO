@@ -4,13 +4,20 @@ import {Link} from "react-router-dom"
 import "../css/admin.css"
 import { useNavigate } from "react-router-dom"
 import { GoogleLogin } from "react-google-login"
+import { gapi } from "gapi-script"
 const clientId = "413271787614-j8ch2do23jvq9paten0djndccaafqc2m.apps.googleusercontent.com"
 
 function GoogleLoginButton(){
+    const navigate = useNavigate();
 
-    const onSuccess = (res)=>{
-        console.log("success")
-        console.log(res.profileObj)
+    const onSuccess = async(res)=>{
+        try{
+            await axios.post("http://localhost:8000/api/auth/register", { email : res.profileObj.email, password : res.profileObj.googleId , fullName : res.profileObj.givenName}, { withCredentials: true })
+            navigate('/homepage');
+        }catch(err){
+            console.log(err)
+        }
+
     }
     const onFailure = (res)=>{
         console.log("failed")
@@ -61,7 +68,7 @@ function SignupPageComponent({setStep}){
             passContainer.current.value = ""
             nameContainer.current.value = ""
 
-            navigate('/desired-route');
+            navigate('/homepage');
 
        } catch (error) {
             console.log(`error : ${error}`)
@@ -118,7 +125,15 @@ function SignupPageComponent({setStep}){
 
 function SignupPage(){
 
-
+    React.useEffect(()=>{
+        function start(){
+            gapi.client.init({
+                clientId : clientId,
+                scope : ""
+            })
+        }
+        gapi.load("client:auth2" , start)
+    } , [])
     return(
         <div className="admin_page">
             <SignupPageComponent/>
