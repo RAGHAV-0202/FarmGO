@@ -10,13 +10,13 @@ const predictCrop = asyncHandler(async (req, res) => {
     // console.log({ N, P, K, rainfall, temperature, humidity })
     const cropData = { N, P, K, rainfall, temperature, humidity }
 
-    const response = axios.post("http://127.0.0.1:5000/predict" , cropData ,{
+    const response = await axios.post("http://127.0.0.1:5000/predict" , cropData ,{
         headers: {
             'Content-Type': 'application/json'
         }
     });
 
-    console.log(response)
+    res.status(200).json(new ApiResponse(200 , response , "predicted"))
     
 
     // let options = {

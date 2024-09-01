@@ -31,13 +31,87 @@
     display: flex;
     background-color: greenyellow;
     border-radius: 20px;
+    padding: 30px;
 }
+
 .Suggestion_div{
-    background-color: salmon;
+    background-color: #edeffd;
+    display: flex;
+    flex-direction: column;
+}
+.Suggestion_div p {
+    /* padding-left: 15px; */
+    padding-top: 5px;
+    font-size: 14px;
+    font-weight: 600;
 }
 .Disease_div{
     background-color: lightblue;
 }
 .MarketPlace_div{
     background-color: lightcoral;
+}
+
+.input_area{
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+    gap: 15px;
+}
+
+.entry {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    /* background-color: saddlebrown; */
+    max-width: 550px;
+}
+
+.entry p {
+    padding: 10px;
+    width: 200px;
+    font-weight: 600;
+
+}
+
+.entry input {
+    padding: 10px 10px;
+    min-width: 350px;
+
+    border: none;
+    border-radius: 5px;
+}
+
+.small{
+    min-width: 200px;
+}
+.ent3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: rebeccapurple; */
+}
+
+.entry button {
+    width: 200px;
+    height: 50px;
+    padding: 10px 20px;
+    outline: none;
+    border-radius: 2px;
+    border: none;
+    background-color: rgb(10, 65, 136);
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+}
+.entry{
+    /* background-color: salmon; */
+    max-width: 100vw;
+}
+.double{
+    min-width: 100vh ;
+    /* background-color: saddlebrown; */
+    display: flex;
+    /* justify-content: space-between; */
+    gap: 80px;
 }
