@@ -13,7 +13,7 @@ function GoogleLoginButton(){
     const onSuccess = async(res)=>{
         try{
             await axios.post("http://localhost:8000/api/auth/register", { email : res.profileObj.email, password : res.profileObj.googleId , fullName : res.profileObj.givenName}, { withCredentials: true })
-            navigate('/homepage');
+            navigate('/');
         }catch(err){
             console.log(err)
         }
@@ -41,7 +41,7 @@ function GoogleLoginButton(){
     )
 }
 
-function SignupPageComponent({setStep}){
+function SignupPageComponent(){
     const navigate = useNavigate();
     const [message_for_frontend , setMsg] = React.useState("")
 
@@ -67,12 +67,12 @@ function SignupPageComponent({setStep}){
             emailContainer.current.value = ""
             passContainer.current.value = ""
             nameContainer.current.value = ""
-
-            navigate('/homepage');
+            // setStep(1)
+            navigate('/');
 
        } catch (error) {
             console.log(`error : ${error}`)
-            setMsg( "Invalid Email or Password")
+            setMsg( "Unable to Register , Minimum Password length is 6")
             alert(error)
             console.log(error.stack)
        }
@@ -82,7 +82,7 @@ function SignupPageComponent({setStep}){
         <div className="login_page">
                 <div className="left">
                     <div className="left_header heading">
-                        <p>FlashCards <span> Admin</span></p>
+                       <p>Agro<span>Board</span></p>
                     </div>
                     <div className="left_content">
                         <div className="left_container">
@@ -98,7 +98,7 @@ function SignupPageComponent({setStep}){
                                     <p>{message_for_frontend}</p>
                                 </p>
                                 <button onClick={handleSubmit} className="sign_up_btn" >Sign up</button>
-                                <span className="center" ><p className="black"></p>Already registered ?<Link class="login_link" to="/login"> Login</Link></span>
+                                <span className="center" ><p className="black"></p>Already registered ?<Link class="login_link" to="/"> Login</Link></span>
                                 <GoogleLoginButton/>
                             </div>
                         </div>
@@ -113,7 +113,7 @@ function SignupPageComponent({setStep}){
                             </label> */}
                         </div>
                         {/* <a href="#" className="btn-other btn">About</a> */}
-                        <Link to="/login" className="btn-login btn">Login</Link>
+                        <Link to="/" className="btn-login btn">Login</Link>
                     </div>
                     <div className="right_content">
                         <div className="right_container"></div>

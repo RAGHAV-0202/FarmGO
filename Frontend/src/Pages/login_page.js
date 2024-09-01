@@ -64,8 +64,8 @@ function LoginPageComponent({setStep}){
 
             emailContainer.current.value = ""
             passContainer.current.value = ""
-            
-            navigate('/homepage');
+            setStep(1)
+            navigate('/');
 
        } catch (error) {
             console.log(`error : ${error}`)
@@ -79,7 +79,7 @@ function LoginPageComponent({setStep}){
         <div className="login_page">
                 <div className="left">
                     <div className="left_header heading">
-                        <p>FlashCards <span> Admin</span></p>
+                        <p>Agro<span>Board</span></p>
                     </div>
                     <div className="left_content">
                         <div className="left_container">
@@ -118,7 +118,7 @@ function LoginPageComponent({setStep}){
     )
 }
 
-function LoginPage(){
+function LoginPage({setStep}){
 
 
     React.useEffect(()=>{
@@ -133,8 +133,7 @@ function LoginPage(){
 
     return(
         <div className="admin_page">
-            <LoginPageComponent/>
-
+            <LoginPageComponent setStep={setStep} />
         </div>
     )
 }

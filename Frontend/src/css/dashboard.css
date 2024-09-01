@@ -1,0 +1,43 @@
+.dashBoard{
+    display: flex;
+    min-width: 100vw;
+    min-height: 100vh;
+    /* background-color: red; */
+    flex-direction: row;
+}
+
+.rightSide{
+    width: calc(100vw - 240px);
+    min-height: 100vh;
+    background-color: #33845e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 25px 15px 10px
+}
+
+.mainDivInRight{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-color: white;
+    border-radius: 20px;
+    /* padding: 10px; */
+}
+
+.dashboard_div , .Suggestion_div , .Disease_div , .MarketPlace_div{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-color: greenyellow;
+    border-radius: 20px;
+}
+.Suggestion_div{
+    background-color: salmon;
+}
+.Disease_div{
+    background-color: lightblue;
+}
+.MarketPlace_div{
+    background-color: lightcoral;
+}
