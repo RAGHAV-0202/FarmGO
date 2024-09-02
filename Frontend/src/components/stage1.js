@@ -1,6 +1,6 @@
 import "../css/stage1.css"
 import react , {useRef}from "react"
-
+import CircularProgress from "./circularProgess"
 function FarmName(){
     return(
         <div className="farmNameDiv">
@@ -44,7 +44,7 @@ function Statistics(){
     return(
         <div className="statistics">
             <div className="weatherDiv shadow">
-                <div className="weatherDivDivison borderBottom">
+                <div className="weatherDivDivison borderBottom ">
                     <p>Air temperature</p>
                     <h6>28 C</h6>
                 </div>
@@ -57,7 +57,27 @@ function Statistics(){
                     <h6>8</h6>
                 </div>
             </div>
-            <div className="financials">s</div>
+            <div className="financials shadow">
+                <div className="financials_top">
+                    <h6>Financial Statistics</h6>
+                    <p>compare with last time</p>
+                </div>
+                <div className="financials_bottom">
+                    <div className="financials_bottomLeft flex">
+                         <CircularProgress percentage={78} />
+                    </div>
+                    <div className="financials_bottomRight flex">
+                        <div className="financials_bottom_box financials_bottom_box_upper">
+                            <p>Current profit</p>
+                            <h6>64 <span>Lakh</span></h6>
+                        </div>
+                        <div className="financials_bottom_box financials_bottom_box_lower">
+                            <p>Expected profit</p>
+                            <h6>82 <span>Lakh</span></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
@@ -68,7 +88,10 @@ function Stage1(){
             <FarmName/>
             <CropInfo/>
             <Statistics/>
-            <div className="graph"></div>
+            <div className="graph">
+
+                {/* <h1>AREA FOR GRAPH</h1> */}
+            </div>
         </div>
     )
 }

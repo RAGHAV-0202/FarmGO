@@ -55,6 +55,7 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: var(--color-bg);
     transition: 0.1s all linear;
+    overflow-x: hidden;
 }
 
 .left {

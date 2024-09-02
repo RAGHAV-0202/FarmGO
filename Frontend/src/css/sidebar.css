@@ -62,7 +62,9 @@
     display: flex;
     flex-direction: column;
     /* background-color: sandybrown; */
+    cursor: pointer;
 }
+
 .options button{
     background: none;
     outline: none;
@@ -82,6 +84,7 @@
     height: 40px;
     border-radius: 8px;
     transition: 0.1s all linear;
+    cursor: pointer;
 }
 
 .options button p {
@@ -92,5 +95,6 @@
     background-color: rgb(241, 231, 213);
     color: black;
     /* font-size: 15px; */
+    background-color: saddlebrown;
 
 }

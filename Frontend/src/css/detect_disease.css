@@ -50,10 +50,244 @@
 
 .diagnose{
     position: absolute;
-    min-width: 600px ;
+    /* min-width: 700px ; */
     min-height: 560px;
-    background-color: seagreen;
+    background-color: white;
     top: 50%;
     left: 50%;
     transform: translate(-50% , -50%);
+    padding: 20px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.imageUploadArea , .detectionArea{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    /* background-color: rebeccapurple; */
+    flex-direction: column;
+}
+.imageUploadArea{
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    justify-content: space-between;
+}
+.detectionArea{
+    background-color: aqua;
+}
+.upload_Area{
+    width: 100%;
+    height: 100%;
+    height: 600px;
+    min-height: 450px;
+    background-color: aqua;
+    margin-top: 20px;
+}
+
+.file-upload-container {
+    width: 320px;
+    /* w-80 */
+    padding: 1.5rem;
+    /* p-6 */
+    border: 2px dashed #fcd34d;
+    /* border-2 border-dashed border-orange-300 */
+    border-radius: 0.5rem;
+    /* rounded-lg */
+    background-color: #fff7ed;
+    /* bg-orange-50 */
+    text-align: center;
+    /* text-center */
+    height: 450px;
+}
+
+.drop-area {
+    padding: 1rem;
+    /* p-4 */
+}
+
+.drop-area.dragging {
+    background-color: #ffedd5;
+    /* bg-orange-100 */
+}
+
+.cloud-icon {
+    margin: 0 auto;
+    color: #fb923c;
+    /* text-orange-400 */
+    width: 3rem;
+    /* w-12 */
+    height: 3rem;
+    /* h-12 */
+    margin-bottom: 1rem;
+    /* mb-4 */
+}
+
+.main-text {
+    color: #374151;
+    /* text-gray-700 */
+    margin-bottom: 0.5rem;
+    /* mb-2 */
+}
+
+.or-text {
+    color: #374151;
+    /* text-gray-700 */
+    margin-bottom: 1rem;
+    /* mb-4 */
+}
+
+.browse-button {
+    padding: 0.5rem 1rem;
+    /* px-4 py-2 */
+    background-color: #fb923c;
+    /* bg-orange-400 */
+    color: white;
+    border-radius: 0.25rem;
+    /* rounded */
+    transition: background-color 0.3s;
+    /* transition-colors */
+}
+
+.browse-button:hover {
+    background-color: #f97316;
+    /* hover:bg-orange-500 */
+}
+
+.file-info {
+    font-size: 0.75rem;
+    /* text-xs */
+    color: #6b7280;
+    /* text-gray-500 */
+    margin-top: 1rem;
+    /* mt-4 */
+}
+.selected-files {
+    margin-top: 1rem;
+    text-align: left;
+}
+
+.selected-files ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.selected-files li {
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    color: #4b5563;
+}
+.file-upload-container {
+    width: 320px;
+    padding: 1.5rem;
+    border: 2px dashed #fcd34d;
+    border-radius: 0.5rem;
+    background-color: #fff7ed;
+    text-align: center;
+}
+
+.drop-area {
+    padding: 1rem;
+}
+
+.drop-area.dragging {
+    background-color: #ffedd5;
+}
+
+.cloud-icon {
+    margin: 0 auto;
+    color: #fb923c;
+    width: 3rem;
+    height: 3rem;
+    margin-bottom: 1rem;
+}
+
+.main-text {
+    color: #374151;
+    margin-bottom: 0.5rem;
+}
+
+.or-text {
+    color: #374151;
+    margin-bottom: 1rem;
+}
+
+.browse-button,
+.submit-button {
+    padding: 0.5rem 1rem;
+    background-color: #fb923c;
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.browse-button:hover,
+.submit-button:hover {
+    background-color: #f97316;
+}
+
+.submit-button {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.submit-button:disabled {
+    background-color: #d1d5db;
+    cursor: not-allowed;
+}
+
+.file-info {
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin-top: 1rem;
+}
+
+.selected-file {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.selected-file p {
+    margin: 0.25rem 0;
+    font-size: 0.875rem;
+    color: #4b5563;
+}
+
+.closebutton{
+    padding: 5px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    position: absolute;
+    top: 20px;
+    border: none;
+    outline: none;
+    right: 10px;
+    background-color: rgb(247, 68, 68);
+    font-size: 22px;
+    color: white;
+    font-weight: 600;
+}
+.closebutton:hover{
+    background-color: rgb(255, 0, 0);
+}
+
+.resultArea{
+    width: 100%;
+    height: 20px;
+    /* background-color: rebeccapurple; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    font-size: 18px;
+    font-weight: 700;
 }
