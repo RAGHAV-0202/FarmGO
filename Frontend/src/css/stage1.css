@@ -1,7 +1,12 @@
 body {
     max-width: 1920px;
-}
 
+}
+.shadow{
+-webkit-box-shadow: 0px 0px 39px -18px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 39px -18px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 39px -18px rgba(0, 0, 0, 0.75);
+}
 .dashboard_div{
     /* background-color: lightblue; */
     display: flex;
@@ -42,8 +47,8 @@ body {
 }
 
 .statistics{
-    height: 250px;
-    background-color: yellow;
+    height: 300px;
+    /* background-color: yellow; */
     flex-direction: row;
     padding: 10px 20px;
     justify-content: space-between;
@@ -53,7 +58,7 @@ body {
     width: 33%;
     height: 100%;
     max-width: 350px;
-    background-color: skyblue;
+    /* background-color: skyblue; */
     display: flex;
 }
 .statistics .financials{
@@ -69,25 +74,30 @@ body {
 }
 .cropInfoDiv {
     height: 110px;
-    background-color: green;
+    /* background-color: green; */
     gap: 20px;
+    display: flex;
+    flex-direction: row;
 }
 
 .CropInfoDivision{
     width: 33%;
     height: 100%;
-    background-color: lightblue;
+    /* background-color: lightblue; */
     max-width: 350px;
     border-radius: 15px;
+    display: flex;
     flex-direction: row;
+    /* padding-left: 25px; */
 }
 .division_left{
-    width: 25%;
+    width: 30%;
     height: 100%;
     /* background-color: rebeccapurple; */
     display: flex;
     align-items: center;
     justify-content: center;
+    /* padding-left: 15px; */
 }
 .division_left i{
     width: 40px;
@@ -101,5 +111,48 @@ body {
 }
 
 .division_right{
-    
+    width: 70%;
+    height: 100%;
+    display: flex;
+    /* background-color: sandybrown; */
+    display: flex;
+    flex-direction: column;
+   justify-content: center;
+}
+.division_right p , .weatherDivDivison p{
+    font-size: 13px;
+    font-weight: 500;
+    color: #333333;
+}
+.division_right h6 , .weatherDivDivison h6{
+    font-size: 20px;
+    font-weight: 700;
+}
+.weatherDiv{
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+
+}
+.weatherDivDivison{
+    width: 100%;
+    height: 33%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: left;
+    padding: 5px 0;
+    padding-left: 20%;
+}
+.weatherDivDivison h6{
+    font-size: 24px;
+    color: #333333;
+    font-weight: 600;
+}
+.weatherDivDivison p {
+    font-size: 14px;
+    font-weight: 600;
+}
+.borderBottom{
+    border-bottom: 1px solid gainsboro;
 }

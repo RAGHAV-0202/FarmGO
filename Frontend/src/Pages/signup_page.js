@@ -3,43 +3,8 @@ import axios from "axios"
 import {Link} from "react-router-dom"
 import "../css/admin.css"
 import { useNavigate } from "react-router-dom"
-import { GoogleLogin } from "react-google-login"
-import { gapi } from "gapi-script"
 const clientId = "413271787614-j8ch2do23jvq9paten0djndccaafqc2m.apps.googleusercontent.com"
 
-function GoogleLoginButton(){
-    const navigate = useNavigate();
-
-    const onSuccess = async(res)=>{
-        try{
-            await axios.post("http://localhost:8000/api/auth/register", { email : res.profileObj.email, password : res.profileObj.googleId , fullName : res.profileObj.givenName}, { withCredentials: true })
-            navigate('/');
-        }catch(err){
-            console.log(err)
-        }
-
-    }
-    const onFailure = (res)=>{
-        console.log("failed")
-        console.log(res )
-    }
-
-    return(
-        <div className="GoogleSignInbutton">
-            {/* <p>or</p> */}
-            <GoogleLogin
-                clientId={clientId}
-                buttonText="Signup"
-                onSuccess={onSuccess}
-                onFailure={onFailure}
-                cookiePolicy={'single_host_origin'}
-                isSignedIn={true}
-                className="GoogleButton"
-            />
-
-        </div>
-    )
-}
 
 function SignupPageComponent(){
     const navigate = useNavigate();
@@ -99,7 +64,7 @@ function SignupPageComponent(){
                                 </p>
                                 <button onClick={handleSubmit} className="sign_up_btn" >Sign up</button>
                                 <span className="center" ><p className="black"></p>Already registered ?<Link class="login_link" to="/"> Login</Link></span>
-                                <GoogleLoginButton/>
+                                
                             </div>
                         </div>
                     </div>
@@ -125,15 +90,6 @@ function SignupPageComponent(){
 
 function SignupPage(){
 
-    React.useEffect(()=>{
-        function start(){
-            gapi.client.init({
-                clientId : clientId,
-                scope : ""
-            })
-        }
-        gapi.load("client:auth2" , start)
-    } , [])
     return(
         <div className="admin_page">
             <SignupPageComponent/>

@@ -1,47 +1,12 @@
 import React from "react"
-import { gapi } from "gapi-script"
 import axios from "axios"
 import "../css/admin.css"
 import {Link} from "react-router-dom"
-import { GoogleLogin } from "react-google-login"
 import { useNavigate } from "react-router-dom"
 
 
-const clientId = "413271787614-j8ch2do23jvq9paten0djndccaafqc2m.apps.googleusercontent.com"
 
 
-function GoogleLoginButton(){
-    const navigate = useNavigate();
-
-    const onSuccess = async(res)=>{
-        try{
-         await axios.post("http://localhost:8000/api/auth/login", { login : res.profileObj.email, password : res.profileObj.googleId }, { withCredentials: true })
-        
-        navigate('/homepage'); 
-        }catch(error){
-            console.log(error)
-        }
-    }
-    const onFailure = (res)=>{
-        console.log("Login Failder , res : " + res )
-    }
-
-    return(
-        <div className="GoogleSignInbutton">
-            {/* <p>or</p> */}
-            <GoogleLogin
-                clientId={clientId}
-                buttonText="Login"
-                onSuccess={onSuccess}
-                onFailure={onFailure}
-                cookiePolicy={'single_host_origin'}
-                isSignedIn={true}
-                className="GoogleButton"
-            />
-
-        </div>
-    )
-}
 
 function LoginPageComponent({setStep}){
     const navigate = useNavigate();
@@ -94,7 +59,7 @@ function LoginPageComponent({setStep}){
                                 </p>
                                 <button onClick={handleSubmit} className="sign_up_btn" >Login</button>
                                 <span className="center" ><p className="black"></p>Not registered yet ?<Link class="login_link" to="/signup"> Sign Up</Link></span>
-                                <GoogleLoginButton/>
+                                {/* <GoogleLoginButton/> */}
                             </div>
                         </div>
                     </div>
@@ -121,15 +86,6 @@ function LoginPageComponent({setStep}){
 function LoginPage({setStep}){
 
 
-    React.useEffect(()=>{
-        function start(){
-            gapi.client.init({
-                clientId : clientId,
-                scope : ""
-            })
-        }
-        gapi.load("client:auth2" , start)
-    } , [])
 
     return(
         <div className="admin_page">
