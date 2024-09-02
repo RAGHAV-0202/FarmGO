@@ -10,45 +10,60 @@ const predictCrop = asyncHandler(async (req, res) => {
     // console.log({ N, P, K, rainfall, temperature, humidity })
     const cropData = { N, P, K, rainfall, temperature, humidity }
 
-    const response = await axios.post("http://127.0.0.1:5000/predict" , cropData ,{
+    const {data} = await axios.post("http://127.0.0.1:5000/predict" , cropData ,{
         headers: {
             'Content-Type': 'application/json'
         }
     });
+    console.log(data)
 
-    res.status(200).json(new ApiResponse(200 , response , "predicted"))
+    res.status(200).json(new ApiResponse(200 , data , "predicted"))
     
-
-    // let options = {
-    //     mode: 'text',
-    //     pythonOptions: ['-u'],
-    //     scriptPath: 'C:/Users/renuk/OneDrive/Desktop/Farm/Backend/src/controllers',
-    //     args: [N, P, K, rainfall, temperature, humidity]
-    // };
-
-    // console.log(options.scriptPath)
-
-    // PythonShell.run("test.py" , options , (err , result)=>{
-    //     if(err){
-    //         console.log(err)
-    //     }else{
-    //         console.log(result)
-    //     }
-    // })
-
-    // PythonShell.run('predict.py', options, (err, results) => {
-    //     console.log("py")
-    //     if (err) {
-    //         console.error('PythonShell error:', err);
-    //         throw new apiError(500, 'Failed to execute Python script');
-    //     }
-    //     if (results) {
-    //         console.log('PythonShell results:', results);
-    //         res.status(200).json(new ApiResponse(200, results[0], 'Predicted Successfully'));
-    //     } else {
-    //         console.log('No results from PythonShell');
-    //         res.status(500).json(new ApiResponse(500, null, 'No result returned from Python script'));
-    //     }
-    // });
 });
 export default predictCrop
+
+
+// import { PythonShell } from "python-shell";
+// import apiError from "../utils/apiError.js";
+// import ApiResponse from "../utils/apiResponse.js";
+// import asyncHandler from "../utils/asyncHandler.js";
+
+// const testSimplePredict = asyncHandler(async (req, res) => {
+//     const { N, P, K, rainfall, temperature, humidity } = req.body;
+
+//     console.log("Input data:", { N, P, K, rainfall, temperature, humidity });
+
+//     let options = {
+//         mode: 'text',
+//         pythonPath: 'python', // or the path to your Python executable
+//         pythonOptions: ['-u'],
+//         scriptPath: 'C:/Users/renuk/OneDrive/Desktop/Farm/Backend/src/controllers',
+//         args: [N, P, K, rainfall, temperature, humidity],
+//         stderrParser: line => console.error(`Python stderr: ${line}`),
+//         stdoutParser: line => console.log(`Python stdout: ${line}`)
+//     };
+
+//     console.log("PythonShell options:", options);
+
+//     try {
+//         const result = await new Promise((resolve, reject) => {
+//             PythonShell.run("predict.py", options, (err, results) => {
+//                 if (err) reject(err);
+//                 else resolve(results);
+//             });
+//         });
+
+//         console.log("PythonShell results:", result);
+
+//         if (result && result.length > 0) {
+//             res.status(200).json(new ApiResponse(200, result, 'Prediction completed'));
+//         } else {
+//             throw new apiError(500, 'No result returned from Python script');
+//         }
+//     } catch (error) {
+//         console.error("Error in testSimplePredict:", error);
+//         throw new apiError(500, `Failed to execute Python script: ${error.message}`);
+//     }
+// });
+
+// export default testSimplePredict;

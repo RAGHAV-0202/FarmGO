@@ -1,0 +1,59 @@
+.Disease_div{
+    /* background-color: rebeccapurple; */
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    overflow: hidden;
+}
+
+.dd_left{
+   width: 50%;
+   display: flex;
+   /* background-color: orange; */
+   flex-direction: column;
+   display: flex;
+   justify-content: center;
+   padding-left: 3%;
+}
+.dd_right{
+    width: 50%;
+    display: flex;
+    /* background-color: green; */
+    overflow: hidden;
+}
+.dd_left h3{
+    padding: 10px 0;
+    font-size: 24px;
+    font-weight: 500;
+}
+.dd_left p {
+    max-width: 450px;
+    padding: 10px 0;
+    font-size: 14px;
+    color: #333333;
+}
+.dd_left button{
+    max-width: 190px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0158da;
+    border-radius: 10px;
+    color: white;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 15px;
+}
+
+.diagnose{
+    position: absolute;
+    min-width: 600px ;
+    min-height: 560px;
+    background-color: seagreen;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+}

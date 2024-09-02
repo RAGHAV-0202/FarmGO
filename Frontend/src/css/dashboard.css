@@ -29,7 +29,7 @@
     width: 100%;
     height: 100%;
     display: flex;
-    background-color: greenyellow;
+    background-color: #FCFCFC;
     border-radius: 20px;
     padding: 30px;
 }
@@ -46,7 +46,7 @@
     font-weight: 600;
 }
 .Disease_div{
-    background-color: lightblue;
+    /* background-color: lightblue; */
 }
 .MarketPlace_div{
     background-color: lightcoral;
@@ -56,7 +56,17 @@
     display: flex;
     flex-direction: column;
     padding-top: 50px;
-    gap: 15px;
+    max-width: 1920px;
+}
+
+.inputs{
+    /* background-color: sandybrown; */
+    min-width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1000px;
 }
 
 .entry {
@@ -76,7 +86,7 @@
 
 .entry input {
     padding: 10px 10px;
-    min-width: 350px;
+    min-width: 250px;
 
     border: none;
     border-radius: 5px;
@@ -85,12 +95,7 @@
 .small{
     min-width: 200px;
 }
-.ent3 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* background-color: rebeccapurple; */
-}
+
 
 .entry button {
     width: 200px;
@@ -106,7 +111,15 @@
 }
 .entry{
     /* background-color: salmon; */
-    max-width: 100vw;
+    max-width: 40%;
+}
+.ent3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: rebeccapurple; */
+    margin-top: 25px;
+    max-width: 1920px;
 }
 .double{
     min-width: 100vh ;
@@ -114,4 +127,14 @@
     display: flex;
     /* justify-content: space-between; */
     gap: 80px;
+}
+.suggestion_output{
+    /* background-color: yellow; */
+    padding-top: 15px;
+    font-size: 14px;
+}
+.suggestion_output h4{
+    display: inline;
+    font-size: 16px;
+    text-transform: capitalize;
 }

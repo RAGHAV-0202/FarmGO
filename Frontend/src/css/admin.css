@@ -44,6 +44,7 @@ font-family: 'Spicy Rice', cursive; */
     margin: 0;
     box-sizing: border-box;
     transition: 0.1s all linear;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {

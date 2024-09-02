@@ -1,4 +1,3 @@
-import sys
 import joblib
 import numpy as np
 import pandas as pd
@@ -17,22 +16,12 @@ def main():
         print("Loading label encoder...")
         le = joblib.load(le_path)
         
-        # Get input data
-        N = float(sys.argv[1])
-        P = float(sys.argv[2])
-        K = float(sys.argv[3])
-        rainfall = float(sys.argv[4])
-        temperature = float(sys.argv[5])
-        humidity = float(sys.argv[6])
-        # N = 90
-        # P= 40
-        # K = 60
-        # rainfall = 200
-        # temperature = 25
-        # humidity = 75
+        # Test input data
+        N, P, K, rainfall, temperature, humidity = 90, 40, 60, 200, 25, 75
         
         # Create feature DataFrame and scale it
-        features = pd.DataFrame([[N, P, K, rainfall, temperature, humidity]], columns=['N', 'P', 'K', 'rainfall', 'temperature', 'humidity'])
+        features = pd.DataFrame([[N, P, K, rainfall, temperature, humidity]], 
+                                columns=['N', 'P', 'K', 'rainfall', 'temperature', 'humidity'])
         print(f"Features before scaling: {features}")
         features_scaled = scaler.transform(features)
         print(f"Features after scaling: {features_scaled}")
@@ -50,5 +39,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+    print("Script completed.")
 
-print("hello")
