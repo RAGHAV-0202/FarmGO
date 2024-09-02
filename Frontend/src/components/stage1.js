@@ -1,6 +1,8 @@
 import "../css/stage1.css"
-import react , {useRef}from "react"
+import react , {useRef , useState , useEffect}from "react"
 import CircularProgress from "./circularProgess"
+
+
 function FarmName(){
     return(
         <div className="farmNameDiv">
@@ -16,22 +18,25 @@ function CropInfo(){
             <CropInfoDivison
                 name = "Crop Name"
                 value = "Cardmom"
+                icon = "wheat"
             />
             <CropInfoDivison
                 name = "Area"
                 value = "53 Acre"
+                icon = "farm"
             />
             <CropInfoDivison
                 name = "Last production"
                 value = "1200 kg"
+                icon = "bag-seedling"
             />
         </div>
     )
 }
-function CropInfoDivison({name , value}){
+function CropInfoDivison({name , value , icon}){
   return(
         <div className="CropInfoDivision shadow">
-            <div className="division_left" ><i class="fa-light fa-farm" style={{color: "#63E6BE"}}></i></div>
+            <div className="division_left" ><i class={`fa-light fa-${icon}`} style={{color: "green"}}></i></div>
             <div className="division_right">
                 <p>{name}</p>
                 <h6>{value}</h6>
@@ -41,16 +46,34 @@ function CropInfoDivison({name , value}){
 }
 
 function Statistics(){
+
+    const APIKey = 'f4c9b1f6671b1e6290662baa534a8ad9';
+    const city = 'Panipat';
+    const [weather, setWeather] = useState(null);
+
+    useEffect(() => {
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}`)
+            .then(res => res.json())
+            .then(data => {
+                setWeather(data);
+                console.log(data); // Logging data for debugging
+            })
+            .catch(error => console.error('Error fetching weather data:', error));
+    }, []);
+
+    console.log(weather.main)
+    
+
     return(
         <div className="statistics">
             <div className="weatherDiv shadow">
                 <div className="weatherDivDivison borderBottom ">
                     <p>Air temperature</p>
-                    <h6>28 C</h6>
+                    <h6>{(weather.main.temp).toFixed(0)} °C</h6>
                 </div>
                 <div className="weatherDivDivison borderBottom">
                     <p>Water content</p>
-                    <h6>32%</h6>
+                    <h6>{weather.main.humidity}%</h6>
                 </div>
                 <div className="weatherDivDivison">
                     <p>pH value</p>
