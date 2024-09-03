@@ -45,14 +45,21 @@ function CropInfoDivison({name , value , icon}){
   )  
 }
 
-function Statistics(){
+function Statistics({position}){
+    let latitude = 29.3722421 // Replace with the actual latitude of Panipat
+    let longitude = 76.9857639; // Replace with the actual longitude of Panipat
+
+    if(position){
+    latitude = position?.latitude 
+    longitude = position?.longitude; 
+    }
 
     const APIKey = 'f4c9b1f6671b1e6290662baa534a8ad9';
-    const city = 'Panipat';
-   const [weather, setWeather] = useState(null);
+
+    const [weather, setWeather] = useState(null);
 
     useEffect(() => {
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}`)
+        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${APIKey}`)
             .then(res => res.json())
             .then(data => {
                 setWeather(data);
@@ -117,11 +124,29 @@ function Statistics(){
 }
 
 function Stage1(){
+    
+
+    const [position, setPosition] = useState({ latitude: null, longitude: null });
+
+  useEffect(() => {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        setPosition({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        });
+      });
+    } else {
+      console.log("Geolocation is not available in your browser.");
+    }
+  }, []);
+  console.log(position)
+
     return(
         <div className="dashboard_div">
             <FarmName/>
             <CropInfo/>
-            <Statistics/>
+            <Statistics position={position}/>
             <div className="graph">
 
                 {/* <h1>AREA FOR GRAPH</h1> */}
