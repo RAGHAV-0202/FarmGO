@@ -41,7 +41,7 @@ function Stage2() {
 
             console.log(data);
             
-            const response = await axios.post("http://localhost:8000/api/predict/suggest" , data,{
+            const response = await axios.post("https://terrible-fish-38.telebit.io/predict" , data,{
             headers: {
                 'Content-Type': 'application/json'
                 }
