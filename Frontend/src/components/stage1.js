@@ -49,7 +49,7 @@ function Statistics(){
 
     const APIKey = 'f4c9b1f6671b1e6290662baa534a8ad9';
     const city = 'Panipat';
-    const [weather, setWeather] = useState(null);
+   const [weather, setWeather] = useState(null);
 
     useEffect(() => {
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}`)
@@ -61,12 +61,9 @@ function Statistics(){
             .catch(error => console.error('Error fetching weather data:', error));
     }, []);
 
-    console.log(weather.main)
-    
-
     return(
         <div className="statistics">
-            <div className="weatherDiv shadow">
+{     weather &&       <div className="weatherDiv shadow">
                 <div className="weatherDivDivison borderBottom ">
                     <p>Air temperature</p>
                     <h6>{(weather.main.temp).toFixed(0)} °C</h6>
@@ -79,7 +76,21 @@ function Statistics(){
                     <p>pH value</p>
                     <h6>8</h6>
                 </div>
-            </div>
+            </div>}
+{!weather && <div className="weatherDiv shadow">
+                <div className="weatherDivDivison borderBottom ">
+                    <p>Air temperature</p>
+                    <h6>25 °C</h6>
+                </div>
+                <div className="weatherDivDivison borderBottom">
+                    <p>Water content</p>
+                    <h6>62%</h6>
+                </div>
+                <div className="weatherDivDivison">
+                    <p>pH value</p>
+                    <h6>8</h6>
+                </div>
+            </div>}
             <div className="financials shadow">
                 <div className="financials_top">
                     <h6>Financial Statistics</h6>
