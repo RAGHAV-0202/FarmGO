@@ -72,8 +72,8 @@ body {
     display: flex;
 }
 .graph{
-    height: 150px;
-    background-color: lightblue;
+    height: 300px;
+    /* background-color: lightblue; */
 }
 .cropInfoDiv {
     height: 110px;

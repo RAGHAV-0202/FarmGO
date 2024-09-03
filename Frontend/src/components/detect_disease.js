@@ -5,11 +5,58 @@ import axios from "axios"
 import video from "../Media/detectDisease.mp4";
 import { CloudUpload } from 'lucide-react';
 
+function Causes({cause}){
+  return(
+    <p><i class="fa-solid fa-circle-dot"></i>{cause}</p>
+  )
+}
+
 const FileUpload = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
+  const [showContent, setShowContent] = useState(true);
   const fileInputRef = useRef(null);
+
+  const [openSection, setOpenSection] = useState("causes"); 
+  const toggleSection = (section) => {
+    setOpenSection(openSection === section ? null : section);
+  };
+
+  // const [newData , setNewData] = react.useState(data)
+  const data =  [
+    {
+      "name": "Apple Scab"
+    },
+    {
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrhDjUL8CvUcVtmv8_UTpE7hiWA2-x_zKOzw&s"
+    },
+    {
+      "prevention": [
+        "Planting scab-resistant apple varieties",
+        "Regular pruning to improve air circulation",
+        "Removing and destroying fallen leaves and infected plant debris",
+        "Applying appropriate fungicides during the early growing season",
+        "Watering at the base of trees to reduce leaf wetness"
+      ]
+    },
+    {
+      "causes": [
+        "Caused by the fungus Venturia inaequalis",
+        "High humidity and rainfall promote fungal growth",
+        "The fungus overwinters in fallen leaves and releases spores in the spring",
+        "Certain apple varieties are more prone to the disease"
+   ]
+  }
+]
+// console.log(data[3].causes)
+// data[3].causes.map((cause)=>{
+//   console.log(cause)
+//   return{
+//     cause
+//   }
+// })
+
 
   const handleDragEnter = (e) => {
     e.preventDefault();
@@ -55,27 +102,58 @@ const FileUpload = () => {
     setUploading(true);
 
     const formData = new FormData();
-    formData.append('image', file);
+    formData.append('file', file);
 
     try {
-      const response = await axios.post('/api/upload', formData, {
+      const response = await axios.post('https://f88b-122-173-30-21.ngrok-free.app/predict', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
       });
       console.log('Upload successful:', response.data);
       alert('Image uploaded successfully!');
-      setFile(null); // Clear the file after successful upload
+      setFile(null);
+      setShowContent(false); 
     } catch (error) {
       console.error('Upload failed:', error);
       alert('Failed to upload image. Please try again.');
+      setShowContent(false); 
     } finally {
       setUploading(false);
     }
   };
 
+    if (!showContent) {
+    return (
+      <div className="file-upload-container result_area_for_disease">
+        <img
+          src={data[1].image}
+          alt="diseased_img"
+        />
+        <h3>{data[0].name}</h3>
+        <div className="disease_info">
+          <div className="disease_info_left shadow">
+            <h4 onClick={() => toggleSection('causes')}>Causes <span>{openSection === 'causes' && <i class="fa-solid fa-minus"></i> } {openSection !== 'causes' && <i class="fa-solid fa-plus"></i> } </span></h4>
+            {openSection === 'causes' &&
+              data[3].causes.map((cause, index) => (
+                <Causes key={index} cause={cause} />
+              ))}
+          </div>
+          <div className="disease_info_right shadow">
+            <h4 onClick={() => toggleSection('preventions')}>Prevention <span>{openSection === 'causes' && <i class="fa-solid fa-minus"></i> } {openSection !== 'causes' && <i class="fa-solid fa-plus"></i> } </span> </h4>
+            {openSection === 'preventions' &&
+              data[2].prevention.map((prevention, index) => (
+                <Causes key={index} cause={prevention} />
+              ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="file-upload-container">
+    <div className="file-upload-container shadow">
+      <h3>Upload Image</h3>
       <div 
         className={`drop-area ${isDragging ? 'dragging' : ''}`}
         onDragEnter={handleDragEnter}
@@ -112,8 +190,6 @@ const FileUpload = () => {
       >
         {uploading ? 'Uploading...' : 'Submit'}
       </button>
-
-      <p className="resultArea"></p>
     </div>
   );
 };
@@ -165,7 +241,7 @@ function Stage3() {
 
           <div className="imageUploadArea  flex">
             <button className="closebutton" onClick={handleClose}>X</button>
-            <h3>Upload Image</h3>
+            
               <FileUpload/>
           </div>
 
@@ -174,3 +250,4 @@ function Stage3() {
   );
 }
 export default Stage3
+

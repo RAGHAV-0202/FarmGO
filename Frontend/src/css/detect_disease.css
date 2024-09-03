@@ -1,5 +1,5 @@
 .Disease_div{
-    /* background-color: rebeccapurple; */
+    background-color: white;
     display: flex;
     flex-direction: row;
     position: relative;
@@ -61,6 +61,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    /* background-color: seagreen; */
     
 }
 .imageUploadArea , .detectionArea{
@@ -89,7 +90,7 @@
 }
 
 .file-upload-container {
-    width: 320px;
+    width: 420px;
     /* w-80 */
     padding: 1.5rem;
     /* p-6 */
@@ -181,7 +182,7 @@
     color: #4b5563;
 }
 .file-upload-container {
-    width: 320px;
+    width: 360px;
     padding: 1.5rem;
     border: 2px dashed #fcd34d;
     border-radius: 0.5rem;
@@ -290,4 +291,54 @@
     padding: 20px;
     font-size: 18px;
     font-weight: 700;
+}
+
+.result_area_for_disease{
+    border: none;
+    background-color: white;
+}
+.result_area_for_disease img{
+    max-height: 250px;
+    border-radius: 15px;
+}
+
+.disease_info{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* height: 100%; */
+    /* background-color: rebeccapurple; */
+    overflow: hidden;
+    height: auto;
+    gap: 10px;
+}
+.result_area_for_disease{
+    /* background-color: red; */
+    padding-top: 0;
+}
+.disease_info_left , .disease_info_right{
+    width: 100%;
+    height: 100%;
+    /* background-color: rebeccapurple; */
+    display: flex;
+}
+.disease_info_left , .disease_info_right{
+    /* border-right: 1px solid gainsboro; */
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    font-size: 14px;
+    color: #333333;
+}
+.disease_info_left i , .disease_info_right i{
+    display: inline;
+    padding-right: 5px;
+    font-size: 9px;
+    text-align: center;
+    transform: translateY(5px);
+}
+.disease_info_left h4 , .disease_info_right h4{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
 }

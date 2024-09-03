@@ -1,7 +1,7 @@
 import "../css/stage1.css"
 import react , {useRef , useState , useEffect}from "react"
 import CircularProgress from "./circularProgess"
-
+import WeatherChart from "./weatherChart"
 
 function FarmName(){
     return(
@@ -44,6 +44,51 @@ function CropInfoDivison({name , value , icon}){
         </div>
   )  
 }
+function Graph({position}){
+    const latitude = position?.latitude || 29.3666816;
+    const longitude =  position?.longitude || 76.9785856;
+    const weatherBitAPI = "bc1f514b2c0c454588b5d109e74eb6a9"; // Replace with your actual API key
+
+    let [weatherData, setData] = useState(null);
+
+    useEffect(() => {
+        // Calculate the dates
+        const currentTime = new Date();
+        const endDate = currentTime.toISOString().split('T')[0]; // Format: YYYY-MM-DD
+        const pastDate = new Date(currentTime.getTime() - 24 * 60 * 60 * 1000); // 24 hours ago
+        const startDate = pastDate.toISOString().split('T')[0]; // Format: YYYY-MM-DD
+
+        // Fetch data from Weatherbit API
+        const url = `https://api.weatherbit.io/v2.0/history/hourly?lat=${latitude}&lon=${longitude}&start_date=${startDate}&end_date=${endDate}&key=${weatherBitAPI}`;
+        
+        fetch(url)
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return res.json();
+            })
+            .then(data => {
+                setData(data);
+                // console.log(data);
+            })
+            .catch(error => {
+                // setError(error.message);
+                console.error('Error fetching data:', error);
+            });
+    }, [latitude, longitude, weatherBitAPI]); // Add dependencies to the array
+
+    // console.log(weatherData?.data)
+
+    return(
+        <div className="graph"> 
+            <WeatherChart
+                data = {weatherData}
+            />
+            {/* <h1>AREA FOR GRAPH</h1> */}
+        </div>
+    )
+}
 
 function Statistics({position}){
 
@@ -52,12 +97,14 @@ function Statistics({position}){
     const longitude =  position?.longitude || 76.9785856; 
     const [weather, setWeather] = useState(null);
 
+    
+
     useEffect(() => {
         fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${APIKey}`)
             .then(res => res.json())
             .then(data => {
                 setWeather(data);
-                console.log(data); // Logging data for debugging
+                // console.log(data); // Logging data for debugging
             })
             .catch(error => console.error('Error fetching weather data:', error));
     }, []);
@@ -134,17 +181,14 @@ function Stage1(){
       console.log("Geolocation is not available in your browser.");
     }
   }, []);
-  console.log(position)
+//   console.log(position)
 
     return(
         <div className="dashboard_div">
             <FarmName/>
             <CropInfo/>
             <Statistics position={position}/>
-            <div className="graph">
-
-                {/* <h1>AREA FOR GRAPH</h1> */}
-            </div>
+            <Graph position={position} />
         </div>
     )
 }

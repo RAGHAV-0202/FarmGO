@@ -13,9 +13,8 @@ function Stage2() {
     const [output , setOutput] = react.useState(false)
     let [suggestion , setSuggestion ] = react.useState("")
     async function handleSubmit(event) {
-        event.preventDefault(); // Prevent the default form submission behavior
+        event.preventDefault(); 
 
-        // Safeguard to ensure refs are not null
         if (N_C.current && P_C.current && K_C.current && R_C.current && H_C.current && T_C.current) {
             const N = N_C.current.value;
             const P = P_C.current.value;
@@ -24,7 +23,6 @@ function Stage2() {
             const H = H_C.current.value;
             const T = T_C.current.value;
 
-            // Basic validation example
             if (!N || !P || !K || !R || !H || !T) {
                 alert("Please fill in all fields.");
                 return;
@@ -40,17 +38,23 @@ function Stage2() {
             };
 
             console.log(data);
-            
-            const response = await axios.post("https://terrible-fish-38.telebit.io/predict" , data,{
-            headers: {
-                'Content-Type': 'application/json'
-                }
-            });
-
-            console.log(response.data.data)
+            let response ; 
+            try{
+            response = await axios.post("https://terrible-fish-38.telebit.io/predict" , data,{
+                headers: {
+                    'Content-Type': 'application/json'
+                    }
+                });
+            console.log(response?.data?.data)
             // result = response.data.data.prediction
-            setSuggestion(response.data.data.prediction)
+            setSuggestion(response?.data?.data?.prediction)
             setOutput(true) 
+
+            }catch(error){
+                console.log("error while loading data ; error : " + error)
+            }
+
+
 
         } else {
             alert("One or more inputs are not correctly referenced.");
@@ -66,19 +70,19 @@ function Stage2() {
                 <div className="inputs">
                     <div className="entry">
                         <p>Nitrogen Value</p>
-                        <input type="number" ref={N_C} placeholder="Enter Nitrogen Value" required />
+                        <input type="number" ref={N_C} placeholder="Enter Nitrogen Value" required max={300} />
                     </div>
                     <div className="entry">
                         <p>Phosphorus Value</p>
-                        <input type="number" ref={P_C} placeholder="Enter Phosphorus Value" required />
+                        <input type="number" ref={P_C} placeholder="Enter Phosphorus Value" required max={300} />
                     </div>
                     <div className="entry">
                         <p>Potassium Value</p>
-                        <input type="number" ref={K_C} placeholder="Enter Potassium Value" required />
+                        <input type="number" ref={K_C} placeholder="Enter Potassium Value" required max={300} />
                     </div>
                     <div className="entry">
                         <p>Rainfall Value</p>
-                        <input type="number" ref={R_C} placeholder="Enter Rainfall Value" required />
+                        <input type="number" ref={R_C} placeholder="Enter Rainfall Value" required  max={400} />
                     </div>
                     <div className="entry">
                         <p>Humidity Value</p>
