@@ -46,16 +46,10 @@ function CropInfoDivison({name , value , icon}){
 }
 
 function Statistics({position}){
-    let latitude = 29.3722421 // Replace with the actual latitude of Panipat
-    let longitude = 76.9857639; // Replace with the actual longitude of Panipat
-
-    if(position){
-    latitude = position?.latitude 
-    longitude = position?.longitude; 
-    }
 
     const APIKey = 'f4c9b1f6671b1e6290662baa534a8ad9';
-
+    const latitude = position?.latitude || 29.3666816;
+    const longitude =  position?.longitude || 76.9785856; 
     const [weather, setWeather] = useState(null);
 
     useEffect(() => {
@@ -73,11 +67,11 @@ function Statistics({position}){
 {     weather &&       <div className="weatherDiv shadow">
                 <div className="weatherDivDivison borderBottom ">
                     <p>Air temperature</p>
-                    <h6>{(weather.main.temp).toFixed(0)} °C</h6>
+                    <h6>{(weather?.main?.temp).toFixed(0)} °C</h6>
                 </div>
                 <div className="weatherDivDivison borderBottom">
                     <p>Water content</p>
-                    <h6>{weather.main.humidity}%</h6>
+                    <h6>{weather?.main?.humidity}%</h6>
                 </div>
                 <div className="weatherDivDivison">
                     <p>pH value</p>
