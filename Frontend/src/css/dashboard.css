@@ -134,11 +134,15 @@
     /* background-color: yellow; */
     padding-top: 15px;
     font-size: 14px;
+    
 }
 .suggestion_output h4{
     display: inline;
-    font-size: 16px;
+    font-size: 18px;
+    text-decoration: underline;
+    color: green;
     text-transform: capitalize;
+    /* font-family: "Cutive Mono", monospace; */
 }
 
 .ent3 button{

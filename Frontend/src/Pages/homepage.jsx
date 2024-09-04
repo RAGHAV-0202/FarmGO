@@ -9,6 +9,9 @@ import stats from "../Media/stats.jpg";
 import protection from "../Media/plant_in_hand.jpg";
 import logo from "../Media/logo.jpg";
 import ImageSlider from "../components/image_slider";
+import "../css/newHomePage.css"
+// import logo from "../Media/logo.png"
+
 const Header = () => {
   // State for burger menu
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -108,11 +111,7 @@ const Header = () => {
               Login
             </Link>
           </li>
-          <li>
-            <Link className="list_items" to="/about">
-              About Us
-            </Link>
-          </li>
+
         </ul>
         <div className={`burger ${isMenuOpen ? "toggle" : ""}`} onClick={toggleMenu}>
           <div className="line1"></div>
@@ -179,14 +178,67 @@ const Slider = ()=>{
   );
 };
 
+const NavBar = ()=>{
+  return(
+    <div className="navbar shadow">
+      <div className="logo">
+        <img src={logo} alt="logo_img"></img>
+        <p>Fasal<span>Guru</span></p>
+      </div>
+      <div className="Link_div">
+        <Link to="/app" >Login</Link>
+      </div>
+    </div>
+  )
+}
+
+const Features = ({display})=>{
+  return(
+    <div className="Features_div">
+      {display &&  <h1>One stop solution for crop diagnosis and Farm Management</h1>}
+      {display === false && <p>We helps farmers diagnose and treat crop problems, improve productivity and provide farming knowledge. Achieve your farming goals and improve your agricultural experience with FaslGuru</p>}
+    </div>
+  )
+}
+
+const ImageDiv = ()=>{
+  return(
+    <div className="ImageDiv">
+      
+      <img src="https://plantix.net/en/assets/images/hero-farmer-cut-india.png" alt="img"></img>
+      <img src="https://plantix.net/en/assets/images/hero-phone-en.png"></img>
+
+
+      <img className="centered_img" src="https://plantix.net/en/assets/custom/homescreen/homescreen-en.png"></img>
+    </div>
+  )
+}
+
+
+
+const NewHomePage = ()=>{
+  return(
+    <div className="HomePageNew">
+        <NavBar/>
+        <Features
+          display = {true}
+        />
+        <ImageDiv/>
+          <Features
+          display = {false}
+        />
+    </div>
+  )
+}
 
 
 
 
 function HomePage(){
     return(
-        <Header/>
+        <NewHomePage />
     )
 }
 
 export default HomePage
+// export default header
