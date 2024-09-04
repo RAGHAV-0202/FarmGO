@@ -24,7 +24,7 @@ function LoginPageComponent({setStep}){
        try {
         alert("please wait, process may take 4-5 seconds")
         console.log(email , password)
-            const response = await axios.post("http://localhost:8000/api/auth/login", { login : email, password }, { withCredentials: true })
+            const response = await axios.post("https://farmgo-production.up.railway.app/api/auth/login", { login : email, password }, { withCredentials: true })
             console.log(response.data.message)
 
             emailContainer.current.value = ""
