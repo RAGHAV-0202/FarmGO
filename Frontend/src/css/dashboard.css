@@ -51,7 +51,13 @@
     /* background-color: lightblue; */
 }
 .MarketPlace_div{
-    background-color: lightcoral;
+    /* background-color: lightcoral; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.MarketPlace_div img{
+    border-radius: 25px;
 }
 
 .input_area{

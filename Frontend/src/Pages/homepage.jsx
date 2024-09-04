@@ -216,10 +216,10 @@ const ImageDiv = ()=>{
 
 
 
-const NewHomePage = ()=>{
+export const NewHomePage = ({header})=>{
   return(
     <div className="HomePageNew">
-        <NavBar/>
+        { header !== false &&  <NavBar/>}
         <Features
           display = {true}
         />

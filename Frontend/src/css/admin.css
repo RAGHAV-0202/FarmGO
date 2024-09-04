@@ -331,3 +331,13 @@ input:checked+.slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
+
+@media screen and (width <= 500px) {
+    .right{
+        display : none
+    }
+    .left{
+        width: 100%;
+    }
+    
+}
