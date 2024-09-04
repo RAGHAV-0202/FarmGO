@@ -23,7 +23,7 @@ function SignupPageComponent(){
 
        try {
         alert("please wait, process may take 4-5 seconds")
-            const response = await axios.post("http://localhost:8000/api/auth/register", { email, password , fullName}, { withCredentials: true })
+            const response = await axios.post("http://farmgo-production.up.railway.app/api/auth/register", { email, password , fullName}, { withCredentials: true })
             console.log(response.data.message)
 
 
