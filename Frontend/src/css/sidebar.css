@@ -39,10 +39,14 @@
     align-items: center;
     justify-content: center;
     margin: 0;
+    overflow: hidden;
 }
+
 .image_div img{
     width: 90px;
     margin: 0;
+    zoom: 1;
+    transform: translate(5%,18%);
 }
 .profile h6{
     color: white;

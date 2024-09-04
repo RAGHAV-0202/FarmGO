@@ -157,7 +157,7 @@ const FileUpload = () => {
   }
 
   return (
-    <div className="file-upload-container shadow">
+    <div className="file-upload-container ">
       <h3>Upload Image</h3>
       <div 
         className={`drop-area ${isDragging ? 'dragging' : ''}`}
@@ -242,7 +242,7 @@ function Stage3() {
           Your browser does not support the video tag.
         </video>
       </div>
-  {on && <div className="diagnose shadow flex">
+  {on && <div className="diagnose  flex">
 
           <div className="imageUploadArea  flex">
             <button className="closebutton" onClick={handleClose}>X</button>

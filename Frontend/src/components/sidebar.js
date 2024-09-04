@@ -1,6 +1,6 @@
 import "../css/sidebar.css"
 import react from "react";
-
+import farmer from "../Media/farmer.png"
 
 
 function Sidebar({ stage, setStage }) {
@@ -14,13 +14,15 @@ function Sidebar({ stage, setStage }) {
     return (
         <div className="sidebar">
             <div className="logo">
-                <h1>AgroBoard</h1>
+                <h1>FasalGuru</h1>
                 <div className="profile">
                     <div className="image_div">
-                        <img src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png"
+                        <img src="https://st.depositphotos.com/1011643/4430/i/950/depositphotos_44309759-stock-photo-young-indian-man-outdoors.jpg"
                             alt="profile_image" />
+                        {/* <img src={farmer}
+                            alt="profile_image" /> */}
                     </div>
-                    <h6>Hello World</h6>
+                    <h6>MAHENDRA KUMAR</h6>
                     <p>Farm Owner</p>
                 </div>
             </div>

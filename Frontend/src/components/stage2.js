@@ -23,15 +23,15 @@ function Stage2() {
             const H = H_C.current.value;
             const T = T_C.current.value;
 
-            if (!N || !P || !K || !R || !H || !T) {
+            if ( !R || !H || !T) {
                 alert("Please fill in all fields.");
                 return;
             }
 
             const data = {
-                N: N,
-                P: P,
-                K: K,
+                N: N || 53,
+                P: P || 53,
+                K: K || 53,
                 rainfall: R,
                 temperature: H,
                 humidity: T
@@ -74,15 +74,15 @@ function Stage2() {
                 <div className="inputs">
                     <div className="entry">
                         <p>Nitrogen Value</p>
-                        <input type="number" ref={N_C} placeholder="Enter Nitrogen Value" required max={300} />
+                        <input type="number" ref={N_C} placeholder="Enter Nitrogen Value"  max={300} />
                     </div>
                     <div className="entry">
                         <p>Phosphorus Value</p>
-                        <input type="number" ref={P_C} placeholder="Enter Phosphorus Value" required max={300} />
+                        <input type="number" ref={P_C} placeholder="Enter Phosphorus Value"  max={300} />
                     </div>
                     <div className="entry">
                         <p>Potassium Value</p>
-                        <input type="number" ref={K_C} placeholder="Enter Potassium Value" required max={300} />
+                        <input type="number" ref={K_C} placeholder="Enter Potassium Value"  max={300} />
                     </div>
                     <div className="entry">
                         <p>Rainfall Value</p>

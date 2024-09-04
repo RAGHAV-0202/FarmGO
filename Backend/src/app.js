@@ -8,8 +8,10 @@ dotenv.config()
 import authRouter from "./routes/auth.routes.js"
 import asyncHandler from "./utils/asyncHandler.js";
 import ApiResponse from "./utils/apiResponse.js";
+import userRouter from "./routes/user.routes.js"
 import PredictRouter from "./routes/predict.routes.js"
 const app = express();
+
 
 
 
@@ -59,6 +61,8 @@ app.get("/" , async(req,res)=>{
 // app.use("/api/products/data" , dataRouter )
 app.use("/api/auth" , authRouter )
 app.use("/api/predict" , PredictRouter)
+app.use("/api/predict" , PredictRouter)
+app.use("/api/user" , userRouter)
 
 
 
