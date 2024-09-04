@@ -24,32 +24,22 @@ const FileUpload = () => {
   };
 
   // const [newData , setNewData] = react.useState(data)
-  const data =  [
-    {
-      "name": "Apple Scab"
-    },
-    {
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrhDjUL8CvUcVtmv8_UTpE7hiWA2-x_zKOzw&s"
-    },
-    {
-      "prevention": [
-        "Planting scab-resistant apple varieties",
-        "Regular pruning to improve air circulation",
-        "Removing and destroying fallen leaves and infected plant debris",
-        "Applying appropriate fungicides during the early growing season",
-        "Watering at the base of trees to reduce leaf wetness"
-      ]
-    },
-    {
-      "causes": [
-        "Caused by the fungus Venturia inaequalis",
-        "High humidity and rainfall promote fungal growth",
-        "The fungus overwinters in fallen leaves and releases spores in the spring",
-        "Certain apple varieties are more prone to the disease"
-   ]
-  }
-]
-// console.log(data[3].causes)
+  let data = {
+    "prediction": {
+        "causes": [
+            "N/A"
+        ],
+        "image": "https://www.shutterstock.com/image-photo/big-fresh-soybean-leaves-detail-260nw-297228320.jpg",
+        "name": "Soybean healthy",
+        "prevention": [
+            "Use crop rotation to prevent disease buildup in the soil.",
+            "Plant disease-resistant soybean varieties.",
+            "Apply balanced fertilizers to promote healthy growth.",
+            "Monitor for signs of pests and diseases, and take early action."
+        ]
+    }
+}
+// console.log(data.prediction)
 // data[3].causes.map((cause)=>{
 //   console.log(cause)
 //   return{
@@ -57,6 +47,7 @@ const FileUpload = () => {
 //   }
 // })
 
+  const [diseaseData , setDiseaseData] = react.useState(data.prediction)
 
   const handleDragEnter = (e) => {
     e.preventDefault();
@@ -105,45 +96,59 @@ const FileUpload = () => {
     formData.append('file', file);
 
     try {
-      const response = await axios.post('https://f88b-122-173-30-21.ngrok-free.app/predict', formData, {
+      const response = await axios.post('https://e2a7-2401-4900-5957-b24a-ddb8-66-8f32-f3de.ngrok-free.app/predict', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
       });
-      console.log('Upload successful:', response.data);
+      // console.log(response.data.prediction)
       alert('Image uploaded successfully!');
+      setDiseaseData(response.data.prediction)
       setFile(null);
       setShowContent(false); 
     } catch (error) {
       console.error('Upload failed:', error);
       alert('Failed to upload image. Please try again.');
-      setShowContent(false); 
+      // setShowContent(false); 
     } finally {
       setUploading(false);
     }
   };
 
+  console.log(diseaseData)
+
     if (!showContent) {
     return (
       <div className="file-upload-container result_area_for_disease">
         <img
-          src={data[1].image}
+
+
+          src={diseaseData?.image}
           alt="diseased_img"
+
+
         />
-        <h3>{data[0].name}</h3>
+        <h3>{diseaseData?.name}</h3>
         <div className="disease_info">
           <div className="disease_info_left shadow">
-            <h4 onClick={() => toggleSection('causes')}>Causes <span>{openSection === 'causes' && <i class="fa-solid fa-minus"></i> } {openSection !== 'causes' && <i class="fa-solid fa-plus"></i> } </span></h4>
+            <h4 onClick={() => toggleSection('causes')}>
+              Causes <span>{openSection === 'causes' ? <i className="fa-solid fa-minus"></i> : <i className="fa-solid fa-plus"></i>}</span>
+            </h4>
             {openSection === 'causes' &&
-              data[3].causes.map((cause, index) => (
+              diseaseData?.causes?.map((cause, index) => (
                 <Causes key={index} cause={cause} />
-              ))}
+              ))
+            }
           </div>
           <div className="disease_info_right shadow">
             <h4 onClick={() => toggleSection('preventions')}>Prevention <span>{openSection === 'causes' && <i class="fa-solid fa-minus"></i> } {openSection !== 'causes' && <i class="fa-solid fa-plus"></i> } </span> </h4>
             {openSection === 'preventions' &&
-              data[2].prevention.map((prevention, index) => (
+
+
+              diseaseData?.prevention.map((prevention, index) => (
                 <Causes key={index} cause={prevention} />
+
+
               ))}
           </div>
         </div>
