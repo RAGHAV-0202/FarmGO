@@ -30,7 +30,7 @@ function LoginPageComponent({setStep}){
             emailContainer.current.value = ""
             passContainer.current.value = ""
             setStep(1)
-            navigate('/');
+            navigate('/app');
 
        } catch (error) {
             console.log(`error : ${error}`)

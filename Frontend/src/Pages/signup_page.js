@@ -33,7 +33,7 @@ function SignupPageComponent(){
             passContainer.current.value = ""
             nameContainer.current.value = ""
             // setStep(1)
-            navigate('/');
+            navigate('/app');
 
        } catch (error) {
             console.log(`error : ${error}`)
@@ -63,7 +63,7 @@ function SignupPageComponent(){
                                     <p>{message_for_frontend}</p>
                                 </p>
                                 <button onClick={handleSubmit} className="sign_up_btn" >Sign up</button>
-                                <span className="center" ><p className="black"></p>Already registered ?<Link class="login_link" to="/"> Login</Link></span>
+                                <span className="center" ><p className="black"></p>Already registered ?<Link class="login_link" to="/app"> Login</Link></span>
                                 
                             </div>
                         </div>
@@ -78,7 +78,7 @@ function SignupPageComponent(){
                             </label> */}
                         </div>
                         {/* <a href="#" className="btn-other btn">About</a> */}
-                        <Link to="/" className="btn-login btn">Login</Link>
+                        <Link to="/app" className="btn-login btn">Login</Link>
                     </div>
                     <div className="right_content">
                         <div className="right_container"></div>
