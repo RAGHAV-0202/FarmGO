@@ -140,3 +140,10 @@
     font-size: 16px;
     text-transform: capitalize;
 }
+
+.ent3 button{
+    cursor: pointer;
+}
+.ent3 button:hover{
+    background-color: rgba(10, 65, 136, 0.861) ;
+}

@@ -45,9 +45,11 @@ function Stage2() {
                     'Content-Type': 'application/json'
                     }
                 });
-            console.log(response?.data?.data)
-            // result = response.data.data.prediction
-            setSuggestion(response?.data?.data?.prediction)
+
+                console.log(response?.data?.prediction)
+
+            
+            setSuggestion(response?.data?.prediction)
             setOutput(true) 
 
             }catch(error){
@@ -60,6 +62,8 @@ function Stage2() {
             alert("One or more inputs are not correctly referenced.");
         }
     }
+
+    console.log(suggestion)
 
     return (
         <div className="Suggestion_div">
