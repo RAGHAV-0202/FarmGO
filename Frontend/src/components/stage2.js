@@ -55,12 +55,26 @@ function Stage2() {
             }catch(error){
                 console.log("error while loading data ; error : " + error)
 
-                const veg = ["muskmelon" , "chickpea" , "wheat" , "cotton" , "jute" , "watermelon"]
-                const randomNumber = Math.floor(Math.random() * 5);
-                setSuggestion(veg[randomNumber])
-                setOutput(true) 
+      
+                if(rainfall > 200 && humidity > 50 ){
+                    setSuggestion("cotton")
+                    setOutput(true)             
+                }else if(rainfall > 200 && humidity < 50){
+                    setSuggestion("wheat")
+                    setOutput(true)  
+                }else if(rainfaill <= 50){
+                       setSuggestion("muskmelon")
+                    setOutput(true)                   
+                }else if(rainfall <= 100 && rainfall > 50){
+                   setSuggestion("chickpea")
+                    setOutput(true)                 
+                }else{
+                setSuggestion("Mango")
+                    setOutput(true)   
+                }
                 
-            }
+                
+                
 
 
 
