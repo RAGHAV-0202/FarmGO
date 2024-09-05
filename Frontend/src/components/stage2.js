@@ -58,6 +58,7 @@ function Stage2() {
                 const veg = ["muskmelon" , "chickpea" , "wheat" , "cotton" , "jute" , "watermelon"]
                 const randomNumber = Math.floor(Math.random() * 5);
                 setSuggestion(veg[randomNumber])
+                setOutput(true) 
                 
             }
 
