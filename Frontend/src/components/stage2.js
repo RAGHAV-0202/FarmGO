@@ -85,15 +85,15 @@ function Stage2() {
                         <input type="number" ref={K_C} placeholder="Enter Potassium Value"  max={300} />
                     </div>
                     <div className="entry">
-                        <p>Rainfall Value ( in mm) </p>
+                        <p>Rainfall Value</p>
                         <input type="number" ref={R_C} placeholder="Enter Rainfall Value" required  max={400} />
                     </div>
                     <div className="entry">
-                        <p>Humidity Value ( in %) </p>
+                        <p>Humidity Value</p>
                         <input type="number" ref={H_C} placeholder="Enter Humidity Value" required max={100} />
                     </div>
                     <div className="entry">
-                        <p>Temperature Value ( in °C )</p>
+                        <p>Temperature Value</p>
                         <input type="number" ref={T_C} placeholder="Enter Temperature Value" required max={60} />
                     </div>
                 </div>
