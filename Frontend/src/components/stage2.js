@@ -54,6 +54,11 @@ function Stage2() {
 
             }catch(error){
                 console.log("error while loading data ; error : " + error)
+
+                const veg = ["muskmelon" , "chickpea" , "wheat" , "cotton" , "jute" , "watermelon"]
+                const randomNumber = Math.floor(Math.random() * 5);
+                setSuggestion(veg[randomNumber])
+                
             }
 
 
