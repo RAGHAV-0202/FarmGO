@@ -54,27 +54,7 @@ function Stage2() {
 
             }catch(error){
                 console.log("error while loading data ; error : " + error)
-
-      
-                if(rainfall > 200 && humidity > 50 ){
-                    setSuggestion("cotton")
-                    setOutput(true)             
-                }else if(rainfall > 200 && humidity < 50){
-                    setSuggestion("wheat")
-                    setOutput(true)  
-                }else if(rainfall <= 50){
-                       setSuggestion("muskmelon")
-                    setOutput(true)                   
-                }else if(rainfall <= 100 && rainfall > 50){
-                   setSuggestion("chickpea")
-                    setOutput(true)                 
-                }else{
-                setSuggestion("Mango")
-                    setOutput(true)   
-                }
-                
-                
-                
+            }
 
 
 
