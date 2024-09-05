@@ -62,7 +62,7 @@ function Stage2() {
                 }else if(rainfall > 200 && humidity < 50){
                     setSuggestion("wheat")
                     setOutput(true)  
-                }else if(rainfaill <= 50){
+                }else if(rainfall <= 50){
                        setSuggestion("muskmelon")
                     setOutput(true)                   
                 }else if(rainfall <= 100 && rainfall > 50){
